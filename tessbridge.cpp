@@ -35,12 +35,12 @@ void ClearPersistentCache(TessBaseAPI a) {
     api->ClearPersistentCache();
 }
 
-int Init(TessBaseAPI a, char* tessdataprefix, char* languages) {
+int InitInit(TessBaseAPI a, char* tessdataprefix, char* languages) {
     tesseract::TessBaseAPI* api = (tesseract::TessBaseAPI*)a;
     return api->Init(tessdataprefix, languages);
 }
 
-int Init(TessBaseAPI a, char* tessdataprefix, char* languages, char* configfilepath, char* errbuf) {
+int TessInit(TessBaseAPI a, char* tessdataprefix, char* languages, char* configfilepath, char* errbuf) {
     tesseract::TessBaseAPI* api = (tesseract::TessBaseAPI*)a;
 
     // {{{ Redirect STDERR to given buffer
@@ -202,7 +202,7 @@ bounding_boxes* GetBoundingBoxes(TessBaseAPI a, int pageIteratorLevel) {
     return box_array;
 }
 
-const char* Version(TessBaseAPI a) {
+const char* TessVersion(TessBaseAPI a) {
     tesseract::TessBaseAPI* api = (tesseract::TessBaseAPI*)a;
     const char* v = api->Version();
     return v;

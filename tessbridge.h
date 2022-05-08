@@ -22,7 +22,7 @@ TessBaseAPI Create(void);
 void Free(TessBaseAPI);
 void Clear(TessBaseAPI);
 void ClearPersistentCache(TessBaseAPI);
-int Init(TessBaseAPI, char*, char*, char*, char*);
+int TessInit(TessBaseAPI, char*, char*, char*, char*);
 struct bounding_boxes* GetBoundingBoxes(TessBaseAPI, int);
 struct bounding_boxes* GetBoundingBoxesVerbose(TessBaseAPI);
 bool SetVariable(TessBaseAPI, char*, char*);
@@ -31,7 +31,7 @@ void SetPageSegMode(TessBaseAPI, int);
 int GetPageSegMode(TessBaseAPI);
 char* UTF8Text(TessBaseAPI);
 char* HOCRText(TessBaseAPI);
-const char* Version(TessBaseAPI);
+const char* TessVersion(TessBaseAPI);
 const char* GetDataPath();
 
 PixImage CreatePixImageByFilePath(char*);

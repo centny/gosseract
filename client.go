@@ -24,7 +24,7 @@ import (
 func Version() string {
 	api := C.Create()
 	defer C.Free(api)
-	version := C.Version(api)
+	version := C.TessVersion(api)
 	return C.GoString(version)
 }
 
@@ -100,7 +100,7 @@ func (client *Client) Close() (err error) {
 
 // Version provides the version of Tesseract used by this client.
 func (client *Client) Version() string {
-	version := C.Version(client.api)
+	version := C.TessVersion(client.api)
 	return C.GoString(version)
 }
 
@@ -268,7 +268,7 @@ func (client *Client) init() error {
 	defer C.free(unsafe.Pointer(tessdataPrefix))
 
 	errbuf := [512]C.char{}
-	res := C.Init(client.api, tessdataPrefix, languages, configfile, &errbuf[0])
+	res := C.TessInit(client.api, tessdataPrefix, languages, configfile, &errbuf[0])
 	msg := C.GoString(&errbuf[0])
 
 	if res != 0 {
